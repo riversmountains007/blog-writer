@@ -6,6 +6,8 @@ import authService from "../appwrite/auth"
 import {useForm} from "react-hook-form"
 import Input from '../components/Input'
 import Button from '../components/Button'
+import logo from "../../public/blog-writer-logo.jpg"
+
 
 function Login() {
     const navigate = useNavigate()
@@ -35,8 +37,7 @@ function Login() {
         <div className="mb-2 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">
             <img
-              src="https://www.kindpng.com/picc/m/37-372099_horse-horse-icon-png-transparent-png.png
-                    "
+              src={logo}
               alt="Website Logo"
               width="150"
               height="50"

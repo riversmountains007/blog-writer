@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../RTK-Store/authSlice';
 import authService from "../appwrite/auth";
+import logo from "../../public/blog-writer-logo.jpg";
 
 function CustomNavlink({ to, end = false, children }) {
   return (
@@ -36,36 +37,43 @@ function Header() {
         padding: "10px",
         backgroundColor: "lightblue",
         marginBottom: "10rem",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
       }}
     >
-      <CustomNavlink to="/" end={true}>
-        Home
-      </CustomNavlink>
+      <span className=" max-w-[100px] mr-14">
+        <img src={logo} alt="Website Logo" width="70" height="50" />
+      </span>
 
-      {isLoggedIn ? (
-        <>
-          <CustomNavlink to="/allposts">All Posts</CustomNavlink>
-          <CustomNavlink to="/addpost">Add Post</CustomNavlink>
-          <button
-           className="header-btns"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <button
-           className="header-btns" onClick={() => navigate("/login")} >
-            Login
-          </button>
+      <span>
+        <CustomNavlink to="/" end={true}>
+          Home
+        </CustomNavlink>
 
-          <button
-           className="header-btns" onClick={() => navigate("/register")}>
-            Register
-          </button>
-        </>
-      )}
+        {isLoggedIn ? (
+          <>
+            <CustomNavlink to="/allposts">All Posts</CustomNavlink>
+            <CustomNavlink to="/addpost">Add Post</CustomNavlink>
+            <button className="header-btns" onClick={handleLogout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <button className="header-btns" onClick={() => navigate("/login")}>
+              Login
+            </button>
+
+            <button
+              className="header-btns"
+              onClick={() => navigate("/register")}
+            >
+              Register
+            </button>
+          </>
+        )}
+      </span>
     </nav>
   );
 }
