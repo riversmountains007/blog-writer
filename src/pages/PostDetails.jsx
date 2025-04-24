@@ -4,29 +4,34 @@ import appwriteService from "../appwrite/db&storage";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 import Button from "../components/Button";
+import { useGetPostsQuery } from '../RTK-Store/postsApiSlice'
+
 
 export default function Post() {
-    const [post, setPost] = useState(null);
     const { slug } = useParams();
     const navigate = useNavigate();
-
-    const {user} = useSelector((state) => state.auth);
-
-    const isAuthor = post && user ? post.userId === user.$id : false;
-
-    useEffect(() => {
-        if (slug) {
-            appwriteService.getPost(slug).then((post) => {
-                if (post) setPost(post);
-                else navigate("/");
-            });
-        } else navigate("/");
-    }, [slug, navigate]);
+    const { user } = useSelector((state) => state.auth);
+    
+    // Get all posts from cache
+    const { data: posts,refetch } = useGetPostsQuery();
+    console.log("Posts from RTK Query:", posts);
+    
+    // Find post by slug directly from cached data
+    const post = posts?.find(p => p.$id === slug);
+  
+    const isAuthor = post?.userId === user?.$id;
+  
+    // Handle missing post
+    if (!post) {
+      navigate("/");
+      return null; // Optional loading state
+    }
 
     const deletePost = () => {
         appwriteService.deletePost(post.$id).then((status) => {
             if (status) {
                 appwriteService.deleteFile(post.featuredImage);
+                refetch(); // Refetch posts to update the list
                 navigate("/");
             }
         });

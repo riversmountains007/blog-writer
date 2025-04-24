@@ -45,7 +45,9 @@ function Header() {
       <span className=" max-w-[100px] mr-14">
         <img src={logo} alt="Website Logo" width="70" height="50" />
       </span>
-
+      <span className="text-2xl font-bold text-emerald-500">
+        <h2>Blogs Writer</h2>
+      </span>
       <span>
         <CustomNavlink to="/" end={true}>
           Home

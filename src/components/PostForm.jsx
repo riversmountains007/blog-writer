@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import Input from "./Input";
 import Button from "./Button";
 import RTE from "./RTE";
+import { useGetPostsQuery } from "../RTK-Store/postsApiSlice";
 
 export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
@@ -19,6 +20,8 @@ export default function PostForm({ post }) {
 
     const navigate = useNavigate();
     const {user} = useSelector((state) => state.auth);
+    const { data: posts,refetch ,isLoading} = useGetPostsQuery();
+    
 
     console.log(user);
     console.log(user.name);
@@ -38,6 +41,7 @@ export default function PostForm({ post }) {
             });
 
             if (dbPost) {
+              refetch(); // Refetch posts to update the list
                 navigate(`/allposts/${dbPost.$id}`);
             }
         } else {
@@ -50,6 +54,7 @@ export default function PostForm({ post }) {
                   userName: user.name });
 
                 if (dbPost) {
+                    refetch(); // Refetch posts to update the list
                     navigate(`/allposts/${dbPost.$id}`);
                 }
             }
@@ -76,6 +81,10 @@ export default function PostForm({ post }) {
 
         return () => subscription.unsubscribe();
     }, [watch, slugTransform, setValue]);
+
+    if (isLoading) {
+      return <h2>Loading...</h2>
+    }
 
     return (
       <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">

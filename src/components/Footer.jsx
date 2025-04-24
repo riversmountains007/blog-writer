@@ -18,13 +18,13 @@ function Footer() {
     <div className="space-y-2 flex-1">
       <div className="flex flex-col gap-2">
         <Link 
-          to="https://google.com/tandc" 
+          to="https://www.freeprivacypolicy.com/live/e0d78b29-4844-4295-90b1-076c50e1c1d9" 
           className="text-sky-700 hover:text-sky-900 transition-colors text-sm"
         >
           Terms and Conditions
         </Link>
         <Link
-          to="https://google.com/privacy"
+          to="https://www.freeprivacypolicy.com/live/7aec1f3d-a289-4026-b82c-7b3438da2981"
           className="text-sky-700 hover:text-sky-900 transition-colors text-sm"
         >
           Privacy Policy

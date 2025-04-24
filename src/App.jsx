@@ -10,6 +10,8 @@ import Register from './pages/Register'
 import RequireAuth from './components/RequireAuth'
 import EditPost from './pages/EditPost'
 import PostDetails from './pages/PostDetails'
+import TandC from './components/TandC'
+import PrivacyPolicy from './components/PrivacyPolicy'
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
         </Route>
 
         <Route path='*' element = {<NotFound/>} />
+        {/* <Route path='terms-and-conditions' element = {<TandC/>} />
+        <Route path='privacy-policy' element = {<PrivacyPolicy/>} /> */}
         
       </Route>
     </Routes>
