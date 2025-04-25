@@ -11,7 +11,7 @@ const Register = ()=> {
     const navigate = useNavigate()
     const [error, setError] = useState("")
     const dispatch = useDispatch()
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit,formState: { errors }} = useForm()
 
     const create = async(data) => {
         setError("")
@@ -35,8 +35,8 @@ const Register = ()=> {
         <div className="mb-2 flex justify-center">
           <span className="inline-block w-full max-w-[100px]">
             <img
-              src="https://www.kindpng.com/picc/m/37-372099_horse-horse-icon-png-transparent-png.png
-                    "
+              src=" ../../public/blog-writer-logo.jpg"
+              className="rounded-full"
               alt="Website Logo"
               width="150"
               height="50"
@@ -84,19 +84,21 @@ const Register = ()=> {
               type="password"
               placeholder="Enter your password"
               {...register("password", {
-                required: true,
-                validate: {
-                  matchPattern: (value) =>
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(
-                      value
-                    ) ||
-                    "Password must be at least 8 characters and include uppercase, lowercase, number, and special character",
+                required: "Password is required",
+                pattern: {
+                  value:
+                    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/,
+                  message:
+                    "Password must contain: 8+ characters, 1 uppercase, 1 lowercase, 1 number, 1 special character",
                 },
               })}
             />
-              
-            <Button type="submit" className="w-full" innerTxt="Create Account" />
-            
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
+            <Button type="submit" className="w-full " innerTxt="Create Account"  />
           </div>
         </form>
       </div>

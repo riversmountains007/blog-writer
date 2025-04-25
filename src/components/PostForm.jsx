@@ -159,7 +159,7 @@ export default function PostForm({ post }) {
         <Button
           type="submit"
           bgColor={post ? "bg-green-500 hover:bg-green-600" : "bg-blue-500 hover:bg-blue-600"}
-          className="w-full py-2.5 text-sm font-medium text-white rounded-lg transition-colors"
+          
           innerTxt={post ? "Update" : "Submit"}
         />
       </div>

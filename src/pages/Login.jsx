@@ -39,6 +39,7 @@ function Login() {
             <img
               src={logo}
               alt="Website Logo"
+              className='rounded-full'
               width="150"
               height="50"
             />
@@ -90,20 +91,20 @@ function Login() {
             />
 
             <Button type="submit" className="w-full" innerTxt="Sign in" />
-            <h2>or</h2>
+            <h2 className='text-black mb-4 text-2xl'>or</h2>
           </div>
         </form>
 
         <button
           onClick={() => authService.loginWithGoogle()}
-          className="w-full bg-gray-200 flex items-center justify-center gap-2 px-4 py-2 rounded">
+          className="w-full bg-blue-600 flex items-center justify-center gap-2 px-4 py-2 rounded">
           <img
             src="https://imagepng.org/wp-content/uploads/2019/08/google-icon-1.png"
             alt="Google Icon"
             width="20"
             height="20"
           />
-          <span>Sign in with Google</span>
+          <span >Sign in with Google</span>
         </button>
       </div>
     </div>

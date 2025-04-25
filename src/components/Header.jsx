@@ -1,23 +1,11 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../RTK-Store/authSlice';
 import authService from "../appwrite/auth";
 import logo from "../../public/blog-writer-logo.jpg";
+import Navigation from "./Navigation";
 
-function CustomNavlink({ to, end = false, children }) {
-  return (
-    <NavLink
-      to={to}
-      end={end}
-      style={({ isActive }) => ({
-        color: isActive ? "green" : "grey",
-      })}
-    >
-      {children}
-    </NavLink>
-  );
-}
 
 function Header() {
   const navigate = useNavigate();
@@ -36,46 +24,31 @@ function Header() {
       style={{
         padding: "10px",
         backgroundColor: "lightblue",
-        marginBottom: "10rem",
+        marginBottom: "5rem",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        width: "100%",
       }}
     >
       <span className=" max-w-[100px] mr-14">
-        <img src={logo} alt="Website Logo" width="70" height="50" />
+        <img
+          src={logo}
+          alt="Website Logo"
+          width="70"
+          height="50"
+          className="rounded-full"
+        />
       </span>
       <span className="text-2xl font-bold text-emerald-500">
         <h2>Blogs Writer</h2>
       </span>
-      <span>
-        <CustomNavlink to="/" end={true}>
-          Home
-        </CustomNavlink>
-
-        {isLoggedIn ? (
-          <>
-            <CustomNavlink to="/allposts">All Posts</CustomNavlink>
-            <CustomNavlink to="/addpost">Add Post</CustomNavlink>
-            <button className="header-btns" onClick={handleLogout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <button className="header-btns" onClick={() => navigate("/login")}>
-              Login
-            </button>
-
-            <button
-              className="header-btns"
-              onClick={() => navigate("/register")}
-            >
-              Register
-            </button>
-          </>
-        )}
-      </span>
+      <Navigation
+        isLoggedIn={isLoggedIn}
+        handleLogout={handleLogout}
+        navigate={navigate}
+      />
+      
     </nav>
   );
 }
