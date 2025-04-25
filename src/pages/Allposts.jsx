@@ -30,7 +30,7 @@ function Allposts() {
 
   return (
     <div className="w-full">
-      <h1 className="text-2xl font-bold">All Posts</h1>
+      <h1 className="text-2xl font-bold text-center">All Posts</h1>
       {posts.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 p-4">
         {posts.map((post) => (

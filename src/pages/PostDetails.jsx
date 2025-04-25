@@ -41,12 +41,12 @@ export default function Post() {
         <div className="py-4">
                 <div className="w-full  mb-4 relative border rounded-xl p-2">
                     <div className="w-full mb-6">
-                        <h1 className="text-2xl font-bold block w-full">{post.title}</h1>
+                        <h1 className="text-2xl font-bold block w-full text-center">{post.title}</h1>
                     </div>
                     <img
                         src={appwriteService.getFileView(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl block w-full h-[300px] object-fit relative"
+                        className="rounded-xl block w-full h-auto md:w-3/4 lg:w-1/2 xl:w-1/3 object-cover relative m-auto"
                     />
 
                     {isAuthor && (
@@ -60,7 +60,7 @@ export default function Post() {
                     )}
                 </div>
                 
-                <div className="browser-css">
+                <div className="browser-css p-4">
                     {parse(post.content)}
                 </div>
         </div>

@@ -91,7 +91,7 @@ function Login() {
             />
 
             <Button type="submit" className="w-full" innerTxt="Sign in" />
-            <h2 className='text-black mb-4 text-2xl'>or</h2>
+            <h2 className='text-black mb-4 text-2xl text-center'>or</h2>
           </div>
         </form>
 

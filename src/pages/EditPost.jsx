@@ -21,7 +21,7 @@ function EditPost() {
 
   return (
     <div className='px-4 py-8'>
-      <h1>EditPost</h1>
+      <h1 className='text-center'>EditPost</h1>
       {post && (
         <PostForm post={post}/>
       )}

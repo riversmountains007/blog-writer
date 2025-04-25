@@ -2,7 +2,7 @@ import React from 'react'
 
 function NotFound() {
   return (
-    <div>404 - NotFound</div>
+    <div className='text-center'>404 - NotFound</div>
   )
 }
 

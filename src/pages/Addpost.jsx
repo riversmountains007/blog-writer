@@ -9,7 +9,7 @@ function Addpost() {
 
 return (
   <div className='w-full '>
-    <h2>Add Post</h2>
+    <h2 className='text-center'>Add Post</h2>
   <PostForm/>
   
   </div>
