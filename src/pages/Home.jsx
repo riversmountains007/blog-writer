@@ -30,7 +30,7 @@ function Home() {
     }
 
     if(!isLoggedIn){
-        return <h2>PLease login to see Posts</h2>
+        return <h2 className='min-h-[40vh]'>PLease login to see Posts</h2>
     }
   return (
     <>
